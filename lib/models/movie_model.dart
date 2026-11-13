@@ -1,0 +1,17 @@
+class Movie {
+  final String title;
+  final String overview;
+  final String posterPath;
+
+  Movie({required this.title, required this.overview, required this.posterPath});
+
+  factory Movie.fromJson(Map<String, dynamic> json) {
+    return Movie(
+      title: json['title'] ?? 'Sin título',
+      overview: json['overview'] ?? 'Sin descripción',
+      posterPath: json['poster_path'] != null 
+          ? 'https://image.tmdb.org/t/p/w500${json['poster_path']}' 
+          : '',
+    );
+  }
+}
